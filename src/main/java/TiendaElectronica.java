@@ -17,7 +17,6 @@ public class TiendaElectronica {
 		return this.direccion;
 	}
 
-
 	public boolean addCliente(Cliente cliente) {
 		for(Cliente cliente1:this.clientes){
 			if(cliente1.getRut().equals(cliente.getRut())){
@@ -28,6 +27,10 @@ public class TiendaElectronica {
 		clientes.add(cliente);
 		System.out.println("Cliente añadido correctamente");
 		return true;
+	}
+
+	public ArrayList<DispositivoTecnologico> getDispositivosTecnologicos() {
+		return dispositivosTecnologicos;
 	}
 
 	public boolean getInformacionDispositivo(DispositivoTecnologico dispositivoTecnologico) {
@@ -51,10 +54,10 @@ public class TiendaElectronica {
 		return false;
 	}
 
-	public boolean addProductosAVenta(DispositivoTecnologico dispositivoTecnologico) {
+	public boolean addProductosAVenta(DispositivoTecnologico dispositivoTecnologico, Venta venta) {
 		if(dispositivoTecnologico!=null){
 			if(dispositivoTecnologico.getStock()!=0){
-				dispositivosTecnologicos.add(dispositivoTecnologico);
+				venta.addProducto(dispositivoTecnologico);
 				System.out.println("Agregado correctamente");
 				return true;
 			}
